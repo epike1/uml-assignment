@@ -6,9 +6,18 @@ public class Player extends Entity implements FormatMethods {
 
     private ArrayList<Item> itemList= new ArrayList<Item>();
     private int maxHealth;
+    private double critChance;
     public Player() {
         super("Honeycrisp", 30, 5);
         maxHealth = getHealth();
+    }
+
+    public double getCritChance() {
+        return critChance;
+    }
+
+    public void setCritChance(double critChance) {
+        this.critChance = critChance;
     }
 
     public void setMaxHealth(int maxHealth) {
@@ -56,7 +65,7 @@ public class Player extends Entity implements FormatMethods {
             System.out.printf("%s was hurt for %s damage!%n", getName(), Math.abs(itemList.get(index).getHealthGiven()));
             FormatMethods.pauseLine();
         } else {
-            System.out.printf("%s was healed for %s!%n", getName(), getHealth());
+            System.out.printf("%s was healed to %s!%n", getName(), getHealth());
             FormatMethods.pauseLine();
         }
 
@@ -69,11 +78,11 @@ public class Player extends Entity implements FormatMethods {
         int choice = 0;
         boolean choiceChosen = false;
 
-        System.out.printf("%nWould you like to improve your health or damage, or duplicate the item you received?");
+        System.out.printf("%nWould you like to increase your health by 16, damage by 4, double your chance to get a critical hit, or duplicate the item you received?");
 
         do {
             FormatMethods.pauseLine();
-            System.out.printf("%n1. Health%n2. Damage%n3. Bonus Item%n");
+            System.out.printf("%n1. Health%n2. Damage%n3. Crit Chance%n4. Duplicate Item%n");
             FormatMethods.pauseLine();
             System.out.printf("%nYour choice: ");
 
@@ -97,7 +106,12 @@ public class Player extends Entity implements FormatMethods {
                     System.out.printf("Damage increased to %d!%n", getDamage());
                     choiceChosen = true;
                     break;
-                case 3:
+                    case 3:
+                    setCritChance(getCritChance() * 10);
+                    System.out.printf("Crit Chance increased to %d%%!%n", (int)(getCritChance() * 100));
+                    choiceChosen = true;
+                    break;
+                case 4:
                     return true;
                 default:
                     System.out.printf("Invalid choice!%n");
