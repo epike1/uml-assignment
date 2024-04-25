@@ -17,15 +17,15 @@ public class Main {
 
         new TurnManager(player, cortland);
 
-        Enemy grannySmith = new Enemy("Granny Smith", 48, 18, "I'll bake you into a delicious apple pie!");
+        Enemy grannySmith = new Enemy("Granny Smith", 48, 12, "I'll bake you into a delicious apple pie!");
 
         new TurnManager(player, grannySmith);
 
-        Enemy redDelicious = new Enemy("Red Delicious", 72, 8, "This fight will keep you on your calyx, soon you'll be dead delicious!");
+        Enemy redDelicious = new Enemy("Red Delicious", 92, 6, "This fight will keep you on your calyx, soon you'll be dead delicious!");
 
         new TurnManager(player, redDelicious);
 
-        Enemy newtonPippin = new Enemy("Newton Pippin", 56, 22, "The apple doesn't fall far from the tree.");
+        Enemy newtonPippin = new Enemy("Newton Pippin", 56, 18, "The apple doesn't fall far from the tree.");
 
         new TurnManager(player, newtonPippin);
 
