@@ -2,7 +2,7 @@ package turnBasedProgram;
 
 import java.util.*;
 
-public class Player extends Entity {
+public class Player extends Entity implements FormatMethods {
 
     private ArrayList<Item> itemList= new ArrayList<Item>();
     private int maxHealth;
@@ -28,17 +28,20 @@ public class Player extends Entity {
     }
     public void addItem(Item item) {
         itemList.add(item);
-        System.out.printf("%s added to inventory.", item.getName());
+        System.out.printf("%s added to inventory.%n", item.getName());
+        FormatMethods.pauseLine();
     }
 
     public void removeItem(int index) {
         System.out.printf("%s removed from inventory.%n", itemList.get(index).getName());
+        FormatMethods.pauseLine();
         itemList.remove(index);
     }
     public void displayItems() {
 
         for (Item i : itemList) {
             System.out.printf("%s: %s%n", i.getName(), i.getDescription());
+            FormatMethods.pauseLine();
         }
 
     }
@@ -48,12 +51,57 @@ public class Player extends Entity {
         if (getHealth() > getMaxHealth()) {
             setHealth(getMaxHealth());
             System.out.printf("%s healed!%n", getName());
+            FormatMethods.pauseLine();
         } else if (itemList.get(index).getHealthGiven() < 0){
-            System.out.printf("%s was hurt for %s damage!%n", getName(), itemList.get(index).getHealthGiven());
+            System.out.printf("%s was hurt for %s damage!%n", getName(), Math.abs(itemList.get(index).getHealthGiven()));
+            FormatMethods.pauseLine();
         } else {
             System.out.printf("%s was healed for %s!%n", getName(), itemList.get(index).getHealthGiven());
+            FormatMethods.pauseLine();
         }
 
         removeItem(index);
+    }
+
+    public void upgradeStat() {
+
+        Scanner input = new Scanner(System.in);
+        int choice = 0;
+        boolean choiceChosen = false;
+
+        System.out.printf("%nWould you like to improve your health or damage?");
+
+        do {
+            FormatMethods.pauseLine();
+            System.out.printf("%n1. Health%n2. Damage%n");
+            FormatMethods.pauseLine();
+            System.out.printf("%nYour choice: ");
+
+            try {
+                choice = input.nextInt();
+            } catch (Exception e) {
+                System.out.printf("Invalid choice!%n");
+                input.next();
+                continue;
+            }
+
+            switch (choice) {
+                case 1:
+                    setMaxHealth(getMaxHealth() + 10);
+                    setHealth(getMaxHealth());
+                    System.out.printf("Health increased to %d!%n", getMaxHealth());
+                    choiceChosen = true;
+                    break;
+                case 2:
+                    setDamage(getDamage() + 3);
+                    System.out.printf("Damage increased to %d!%n", getDamage());
+                    choiceChosen = true;
+                    break;
+                default:
+                    System.out.printf("Invalid choice!%n");
+                    break;
+            }
+
+        } while(!choiceChosen);
     }
 }

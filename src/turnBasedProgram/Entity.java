@@ -8,7 +8,7 @@ public class Entity {
     private int damage;
 
     public Entity() {
-        this.name = "Gala Apple";
+        this.name = "Gala";
         this.health = 15;
         this.damage = 3;
     }
@@ -53,11 +53,13 @@ public class Entity {
 
         if (getCritical()) {
             damageTaken *= 2;
-            System.out.print("Critical hit!");
+            System.out.printf("Critical hit!%n");
+            FormatMethods.pauseLine();
         }
 
         health -= damageTaken;
 
         System.out.println(name + " was hit for " + damageTaken + " damage!");
+        FormatMethods.pauseLine();
     }
 }
