@@ -10,17 +10,17 @@ public class TurnManager implements FormatMethods{
     private Player player;
 
     private static final Item[] itemRewards = new Item[] { // list of items that can be rewarded from fights
-        new Item(), // creates default item
-                new Item("Apple Pie", "Heal 15HP on use.", 15),
-                new Item("Apple Tart", "Heal 7HP on use.", 7),
-                new Item("Apple Cider", "Heal 7HP on use.", 7),
+                new Item(), // creates default item
+                new Item("Apple Pie", "Heal 32HP on use.", 32),
+                new Item("Apple Tart", "Heal 24HP on use.", 24),
+                new Item("Apple Cider", "Heal 24HP on use.", 24),
                 new Item("Apple Seed", "Lose 3HP on use.", -3),
-                new Item("Pineapple", "Heal 12HP on use.", 12),
-                new Item("Candy Apple", "Heal 12HP on use", 12),
-                new Item("Apple Skin", "Heal 4HP on use.", 4),
-                new Item("Apple Chips", "Heal 4HP on use.", 4),
-                new Item("Apple Crisp", "Heal 4HP on use.", 4),
-                new Item("Apple Crumble", "Heal 4HP on use.", 4)
+                new Item("Pineapple", "Heal 16HP on use.", 16),
+                new Item("Candy Apple", "Heal 16HP on use", 16),
+                new Item("Apple Skin", "Heal 8HP on use.", 8),
+                new Item("Apple Chips", "Heal 8HP on use.", 8),
+                new Item("Apple Crisp", "Heal 8HP on use.", 8),
+                new Item("Apple Crumble", "Heal 8HP on use.", 8)
     };
 
     public TurnManager(Player player, Enemy enemy) {
@@ -110,6 +110,7 @@ public class TurnManager implements FormatMethods{
 
             do {
                 FormatMethods.pauseLine();
+
                 System.out.printf("%nWhat item do you choose? (0 to go back): ");
 
                 try {
@@ -121,7 +122,7 @@ public class TurnManager implements FormatMethods{
                 }
 
                 if (choice == 0) {
-                    playerTurn();
+                    // blank choice
                 } else if (choice >= 1 && choice <= listSize) {
                     player.useItem(choice - 1);
                 } else {
@@ -143,6 +144,7 @@ public class TurnManager implements FormatMethods{
 
     private void gameOver() {
         System.out.printf("%nYou lose!");
+        System.exit(0);
     }
 
     private void victory() {
