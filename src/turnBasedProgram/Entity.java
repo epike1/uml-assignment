@@ -41,17 +41,16 @@ public class Entity {
     public int getDamage() {
         return damage;
     }
-
-    public boolean getCritical() { // small chance to deal double damage.
+    public boolean getCritical(double critChance)  { // small chance to deal double damage.
 
         int rand = (int)(Math.random() * 10) + 1;
 
-        return rand == 1;
+        return rand <= 10 * critChance;
     }
 
-    public void calculateHealth(int damageTaken) {
+    public void calculateHealth(int damageTaken, double critChance) {
 
-        if (getCritical()) {
+        if (getCritical(critChance)) {
             damageTaken *= 2;
             System.out.printf("Critical hit!%n");
             FormatMethods.pauseLine();
