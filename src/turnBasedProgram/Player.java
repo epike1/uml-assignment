@@ -87,13 +87,13 @@ public class Player extends Entity implements FormatMethods {
 
             switch (choice) {
                 case 1:
-                    setMaxHealth(getMaxHealth() + 10);
+                    setMaxHealth(getMaxHealth() + 16);
                     setHealth(getMaxHealth());
                     System.out.printf("Health increased to %d!%n", getMaxHealth());
                     choiceChosen = true;
                     break;
                 case 2:
-                    setDamage(getDamage() + 3);
+                    setDamage(getDamage() + 4);
                     System.out.printf("Damage increased to %d!%n", getDamage());
                     choiceChosen = true;
                     break;
