@@ -56,24 +56,24 @@ public class Player extends Entity implements FormatMethods {
             System.out.printf("%s was hurt for %s damage!%n", getName(), Math.abs(itemList.get(index).getHealthGiven()));
             FormatMethods.pauseLine();
         } else {
-            System.out.printf("%s was healed for %s!%n", getName(), itemList.get(index).getHealthGiven());
+            System.out.printf("%s was healed for %s!%n", getName(), getHealth());
             FormatMethods.pauseLine();
         }
 
         removeItem(index);
     }
 
-    public void upgradeStat() {
+    public boolean upgradeStat() {
 
         Scanner input = new Scanner(System.in);
         int choice = 0;
         boolean choiceChosen = false;
 
-        System.out.printf("%nWould you like to improve your health or damage?");
+        System.out.printf("%nWould you like to improve your health or damage, or duplicate the item you received?");
 
         do {
             FormatMethods.pauseLine();
-            System.out.printf("%n1. Health%n2. Damage%n");
+            System.out.printf("%n1. Health%n2. Damage%n3. Bonus Item%n");
             FormatMethods.pauseLine();
             System.out.printf("%nYour choice: ");
 
@@ -97,11 +97,15 @@ public class Player extends Entity implements FormatMethods {
                     System.out.printf("Damage increased to %d!%n", getDamage());
                     choiceChosen = true;
                     break;
+                case 3:
+                    return true;
                 default:
                     System.out.printf("Invalid choice!%n");
                     break;
             }
 
         } while(!choiceChosen);
+
+        return false;
     }
 }
