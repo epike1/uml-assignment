@@ -133,12 +133,12 @@ public class TurnManager implements FormatMethods{
         }
     }
     private void playerAttack() {
-        enemy.calculateHealth(player.getDamage());
+        enemy.calculateHealth(player.getDamage(), 0.1);
     }
 
     private void enemyAttack() {
         System.out.printf("%n%s attacks!%n", enemy.getName());
-        player.calculateHealth(enemy.getDamage());
+        player.calculateHealth(enemy.getDamage(), player.getCritChance());
     }
 
     private void gameOver() {
