@@ -85,7 +85,6 @@ public class TurnManager implements FormatMethods{
                     break;
                 default:
                     System.out.printf("Invalid choice!%n%n");
-                    input.next();
                     break;
             }
         } while (!playerAttacked);
@@ -156,10 +155,18 @@ public class TurnManager implements FormatMethods{
         Random rand = new Random();
         Item chosenItem = itemRewards[rand.nextInt(itemRewards.length)];
 
-        System.out.printf("Item recieved: %s!%n", chosenItem.getName());
+        System.out.printf("Item received: %s!%n", chosenItem.getName());
+        System.out.printf("Use: %s%n", chosenItem.getDescription());
         FormatMethods.pauseLine();
         player.addItem(chosenItem);
-        player.upgradeStat();
+
+        if (player.upgradeStat()) { // true or false if bonus item is chosen.
+
+            System.out.printf("Item received: %s!%n", chosenItem.getName());
+            FormatMethods.pauseLine();
+            player.addItem(chosenItem);
+
+        }
     }
 
     private void displayHealth() {
