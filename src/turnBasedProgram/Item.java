@@ -7,8 +7,8 @@ public class Item {
     private int healthGiven;
     public Item() {
         this.name = "Apple Juice";
-        this.description = "Heal 7HP on use.";
-        this.healthGiven = 7;
+        this.description = "Heal 16HP on use.";
+        this.healthGiven = 16;
     }
 
     public Item(String name, String description, int healthGiven) {
