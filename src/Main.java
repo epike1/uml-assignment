@@ -1,4 +1,6 @@
 import shapesProgram.*;
+import turnBasedProgram.*;
+import java.util.concurrent.TimeUnit;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -6,28 +8,27 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Rectangle r1 = new Rectangle(); // default constructor
-        Rectangle r2 = new Rectangle(15, 25);
+        Player player = new Player();
+        Enemy gala = new Enemy();
 
-        System.out.println(r1);
-        System.out.println(r2 +"\n");
+        new TurnManager(player, gala);
 
-        Square s1 = new Square(); // default constructor
-        Square s2 = new Square(15);
+        Enemy cortland = new Enemy("Cortland", 28, 8, "Getting in your way feels very a-peel-ing at the moment.");
 
-        System.out.println(s1);
-        System.out.println(s2 +"\n");
+        new TurnManager(player, cortland);
 
-        RightTriangle t1 = new RightTriangle(); // default constructor
-        RightTriangle t2 = new RightTriangle(10, 15);
+        Enemy grannySmith = new Enemy("Granny Smith", 48, 18, "I'll bake you into a delicious apple pie!");
 
-        System.out.println(t1);
-        System.out.println(t2 + "\n");
+        new TurnManager(player, grannySmith);
 
-        Pentagon p1 = new Pentagon(); // default constructor
-        Pentagon p2 = new Pentagon(15);
+        Enemy redDelicious = new Enemy("Red Delicious", 72, 8, "This fight will keep you on your calyx, soon you'll be dead delicious!");
 
-        System.out.println(p1);
-        System.out.println(p2);
+        new TurnManager(player, redDelicious);
+
+        Enemy newtonPippin = new Enemy("Newton Pippin", 56, 22, "The apple doesn't fall far from the tree.");
+
+        new TurnManager(player, newtonPippin);
+
+        System.out.println("You won the game!");
     }
 }
