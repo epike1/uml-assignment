@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
 
-    public static void main(String[] args) {
+    public static void turnBasedProgram() {
 
         Player player = new Player();
         Enemy gala = new Enemy();
@@ -30,5 +30,38 @@ public class Main {
         new TurnManager(player, newtonPippin);
 
         System.out.println("You won the game!");
+
+    }
+
+    public static void shapesProgram() {
+        
+        Rectangle r1 = new Rectangle();
+        Rectangle r2 = new Rectangle(15, 25);
+        
+        System.out.println(r1);
+        System.out.println(r2);
+        
+        Square s1 = new Square();
+        Square s2 = new Square(25);
+        
+        System.out.println(s1);
+        System.out.println(s2);
+        
+        RightTriangle t1 = new RightTriangle();
+        RightTriangle t2 = new RightTriangle(15, 25);
+        
+        System.out.println(t1);
+        System.out.println(t2);
+        
+        Pentagon p1 = new Pentagon();
+        Pentagon p2 = new Pentagon(25);
+        
+    }
+
+
+    public static void main(String[] args) {
+
+        shapesProgram();
+       //turnBasedProgram();
     }
 }
